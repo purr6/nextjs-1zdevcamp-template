@@ -1,8 +1,24 @@
 "use client";
+import { getMemories } from "@/app/memories/page";
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import React from 'react'
 
 export function SideBar() {
+
+    const [memories, setMemories] = React.useState<any>(null);
+
+    React.useEffect(() => {
+        const fetchMemories = async () => {
+            const data = await getMemories();
+            setMemories(data);
+        };
+        fetchMemories();
+    }, []);
+
+    if (!memories) {
+        return <div>Loading...</div>; // 데이터가 로드되는 동안 표시할 내용
+    }
 
     return (
         <aside className="w-80 bg-white dark:bg-gray-800 border-r dark:border-gray-700">
@@ -13,24 +29,17 @@ export function SideBar() {
                 </Link>
             </div>
             <nav className="flex flex-col gap-1 px-6 py-4 overflow-y-auto">
-                <div className="bg-white shadow rounded-lg p-4 dark:bg-gray-700 flex justify-between items-start">
-                    <div>
-                        <h2 className="text-lg font-semibold dark:text-gray-200">John's Memory</h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Visited the Grand Canyon</p>
+                {memories.map((memory: { title: string, content: string }, index: number) => (
+                    <div className="bg-white shadow rounded-lg p-4 dark:bg-gray-700 flex justify-between items-start" key={index}>
+                        <div>
+                            <h2 className="text-lg font-semibold dark:text-gray-200">{memory.title}</h2>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">{memory.content}</p>
+                        </div>
+                        <Button className="text-red-500" variant="outline">
+                            <TrashIcon className="h-6 w-6" />
+                        </Button>
                     </div>
-                    <Button className="text-red-500" variant="outline">
-                        <TrashIcon className="h-6 w-6" />
-                    </Button>
-                </div>
-                <div className="bg-white shadow rounded-lg p-4 dark:bg-gray-700 flex justify-between items-start">
-                    <div>
-                        <h2 className="text-lg font-semibold dark:text-gray-200">Jane's Memory</h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">First day at college</p>
-                    </div>
-                    <Button className="text-red-500" variant="outline">
-                        <TrashIcon className="h-6 w-6" />
-                    </Button>
-                </div>
+                ))}
             </nav>
         </aside>
     );

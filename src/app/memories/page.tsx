@@ -3,7 +3,7 @@ import { MemoryCard } from '@/components/memory-card'
 import React from 'react'
 
 
-const getMemories = async () => {
+export const getMemories = async () => {
     // Because this is server components, we have to define the URL with http
     const res = await fetch('/api/memories')
     if (!res.ok) {
