@@ -3,16 +3,14 @@
  * @see https://v0.dev/t/VxAqeNMr15Z
  */
 import { SideBar } from "@/components/base-chat/side-bar"
-import { ChatMain } from "@/components/base-chat/chat-main"
-import { InputBox } from "./base-chat/input-box"
+import { Chat } from "./chat"
 
 export function BaseChatLayout() {
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       <SideBar />
       <main className="flex flex-col flex-1">
-        <ChatMain />
-        <InputBox />
+        <Chat />
       </main>
     </div>
   )
