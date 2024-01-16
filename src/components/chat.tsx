@@ -18,7 +18,7 @@ export function Chat() {
 					<input
 						className="w-full max-w-md p-2 border border-gray-300 rounded shadow-xl text-black"
 						value={input}
-						placeholder="어떤 기억을 등록해드릴까요?"
+						placeholder="무엇을 도와드릴까요?"
 						onChange={handleInputChange}
 						style={{ textAlign: 'center' }}
 					/>

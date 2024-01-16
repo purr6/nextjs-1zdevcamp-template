@@ -15,6 +15,21 @@ const getMemories = async () => {
     }
 }
 
+const deleteMemory = async (id: Number) => {
+    // Because this is server components, we have to define the URL with http
+    const res = await fetch(`/api/memories/${id}`, {
+        method: 'DELETE',
+    })
+    if (!res.ok) {
+        return {
+        }
+    } else {
+        const json = await res.json()
+        return json.memories
+    }
+
+}
+
 export function SideBar() {
 
     const [memories, setMemories] = React.useState<any>(null);
@@ -43,14 +58,14 @@ export function SideBar() {
                 </Link>
             </div>
             <nav className="flex flex-col gap-1 px-6 py-4 overflow-y-auto">
-                {memories.map((memory: { title: string, content: string }, index: number) => (
+                {memories.map((memory: { title: string, content: string, id: Number }, index: number) => (
                     <div className="bg-white shadow rounded-lg p-4 dark:bg-gray-700 flex justify-between items-start" key={index}>
                         <div>
                             <h2 className="text-lg font-semibold dark:text-gray-200">{memory.title}</h2>
                             <p className="text-sm text-gray-500 dark:text-gray-400">{memory.content}</p>
                         </div>
-                        <Button className="text-red-500" variant="outline">
-                            <TrashIcon className="h-6 w-6" />
+                        <Button className="text-red-500" variant="outline" onClick={() => deleteMemory(memory.id)}>
+                            <TrashIcon className="h-6 w-6" memoryId={memory.id} />
                         </Button>
                     </div>
                 ))}
@@ -61,6 +76,7 @@ export function SideBar() {
 
 interface Props {
     className: string;
+    memoryId: Number;
 }
 
 function TrashIcon(props: Props) {

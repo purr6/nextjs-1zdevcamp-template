@@ -17,13 +17,11 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
 
 
 // Action to delete
-export const DELETE = async (req: NextRequest) => {
-    const url = new URL(req.url).searchParams;
-    const id = Number(url.get("id")) || 0;
+export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
 
     const memory = await prisma.chatMemory.delete({
         where: {
-            id: id,
+            id: Number(params.id),
         },
     });
 
