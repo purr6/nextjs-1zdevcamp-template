@@ -1,8 +1,19 @@
 "use client";
-import { getMemories } from "@/app/memories/page";
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import React from 'react'
+
+const getMemories = async () => {
+    // Because this is server components, we have to define the URL with http
+    const res = await fetch('/api/memories')
+    if (!res.ok) {
+        return {
+        }
+    } else {
+        const json = await res.json()
+        return json.memories
+    }
+}
 
 export function SideBar() {
 
