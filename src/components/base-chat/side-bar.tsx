@@ -15,21 +15,6 @@ const getMemories = async () => {
     }
 }
 
-const deleteMemory = async (id: Number) => {
-    // Because this is server components, we have to define the URL with http
-    const res = await fetch(`/api/memories/${id}`, {
-        method: 'DELETE',
-    })
-    if (!res.ok) {
-        return {
-        }
-    } else {
-        const json = await res.json()
-        return json.memories
-    }
-
-}
-
 export function SideBar() {
 
     const [memories, setMemories] = React.useState<any>(null);
@@ -41,6 +26,20 @@ export function SideBar() {
         };
         fetchMemories();
     }, []);
+
+    const deleteMemory = async (id: Number) => {
+        const res = await fetch(`/api/memories/${id}`, {
+            method: 'DELETE',
+        })
+        if (!res.ok) {
+            return {
+            }
+        } else {
+            const json = await res.json()
+            setMemories(memories.filter((memory: any) => memory.id !== id));
+            return json.memories
+        }
+    };
 
     if (!memories) {
         return (
