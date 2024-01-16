@@ -5,16 +5,23 @@ const prisma = new PrismaClient();
 
 // Action to read
 export const GET = async (req: NextRequest) => {
-    const posts = await prisma.chatMemory.findMany({});
+    const memories = await prisma.chatMemory.findMany({});
     return NextResponse.json({
-        posts,
+        memories,
     });
 };
 
 // Action to create
 export const POST = async (req: NextRequest) => {
-    const posts = await prisma.chatMemory.findMany({});
+    const { title, content } = await req.json();
+
+    const memory = await prisma.chatMemory.create({
+        data: {
+            title,
+            content,
+        },
+    });
     return NextResponse.json({
-        posts,
+        memory,
     });
 };

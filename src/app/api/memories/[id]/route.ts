@@ -4,28 +4,17 @@ import { NextRequest, NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 // Action to read
-export const GET = async (req: NextRequest) => {
-    const memories = await prisma.chatMemory.findMany({});
-
-    return NextResponse.json({
-        memories: memories,
-    });
-};
-
-// Action to create
-export const POST = async (req: NextRequest) => {
-    const { title, content } = await req.json();
-
-    const memory = await prisma.chatMemory.create({
-        data: {
-            title,
-            content,
+export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
+    const memory = await prisma.chatMemory.findUnique({
+        where: {
+            id: Number(params.id),
         },
     });
     return NextResponse.json({
-        memory,
+        memory: memory,
     });
 };
+
 
 // Action to delete
 export const DELETE = async (req: NextRequest) => {
