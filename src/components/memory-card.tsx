@@ -50,7 +50,7 @@ function PencilIcon(props: { className: string }) {
 }
 
 
-function TrashIcon(props) {
+function TrashIcon(props: { className: string }) {
   return (
     <svg
       {...props}
