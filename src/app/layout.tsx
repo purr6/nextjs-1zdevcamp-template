@@ -4,11 +4,6 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const navLinks = [
-  { href: '/memories', label: 'Memories' },
-  { href: '/settings', label: 'Settings' },
-]
-
 export const metadata: Metadata = {
   title: '1zdevcamp',
   description: '1zdevcamp template',
