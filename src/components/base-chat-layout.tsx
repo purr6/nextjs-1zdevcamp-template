@@ -10,7 +10,9 @@ export function BaseChatLayout() {
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       <SideBar />
       <main className="flex flex-col flex-1">
-        <Chat />
+        <div className="flex flex-col flex-1 overflow-y-auto p-6 space-y-4">
+          <Chat />
+        </div>
       </main>
     </div>
   )
