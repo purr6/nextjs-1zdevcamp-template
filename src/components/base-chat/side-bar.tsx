@@ -31,9 +31,14 @@ export function SideBar() {
     );
 }
 
-function TrashIcon() {
+interface Props {
+    className: string;
+}
+
+function TrashIcon(props: Props) {
     return (
         <svg
+            {...props}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
