@@ -4,3 +4,9 @@ npx prisma init --datasource-provider mysql
 
 #Prisma DB Table 생성 커멘드
 npx prisma db push
+
+#Prisma 스튜지오 열기
+npx prisma studio
+
+#CRUD 예시 블로그
+https://medium.com/@irwantoalvin/crud-tutorial-using-next-js-app-router-typescript-prisma-planetscale-and-tailwindcss-part-1-a4b6687eecdf
