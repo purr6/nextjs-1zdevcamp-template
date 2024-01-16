@@ -1,11 +1,16 @@
+"use client";
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function SideBar() {
+
     return (
         <aside className="w-80 bg-white dark:bg-gray-800 border-r dark:border-gray-700">
             <div className="flex items-center justify-start h-16 px-6 border-b dark:border-gray-700">
                 <h1 className="text-lg font-semibold dark:text-gray-200">1ZDEVCAMP</h1>
                 <h2 className="ml-2 text-sm font-semibold dark:text-gray-200">Memory Hub</h2>
+                <Link className="ml-4 text-right" href="/memories">⚙️
+                </Link>
             </div>
             <nav className="flex flex-col gap-1 px-6 py-4 overflow-y-auto">
                 <div className="bg-white shadow rounded-lg p-4 dark:bg-gray-700 flex justify-between items-start">
