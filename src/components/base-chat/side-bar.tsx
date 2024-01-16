@@ -17,7 +17,10 @@ export function SideBar() {
     }, []);
 
     if (!memories) {
-        return <div>Loading...</div>; // 데이터가 로드되는 동안 표시할 내용
+        return (
+            <aside className="w-80 bg-white dark:bg-gray-800 border-r dark:border-gray-700">
+                <div>Loading...</div>
+            </aside>); // 데이터가 로드되는 동안 표시할 내용
     }
 
     return (
