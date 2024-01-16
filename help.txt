@@ -1,0 +1,6 @@
+#Prisma 설치
+npm install prisma typescript ts-node @types/node --save-dev
+npx prisma init --datasource-provider mysql
+
+#Prisma DB Table 생성 커멘드
+npx prisma db push
