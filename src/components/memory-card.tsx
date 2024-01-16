@@ -5,64 +5,26 @@
 import { Button } from "@/components/ui/button"
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 
-export function MemoryCard() {
+export function MemoryCard({ chatMemory }: { chatMemory: { id: Number, title: string, content: string } }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
-      <Card className="relative">
-        <div className="absolute top-2 right-2 flex space-x-2">
-          <Button size="icon" variant="ghost">
-            <PencilIcon className="h-4 w-4" />
-            <span className="sr-only">Modify</span>
-          </Button>
-          <Button size="icon" variant="ghost">
-            <TrashIcon className="h-4 w-4" />
-            <span className="sr-only">Delete</span>
-          </Button>
-        </div>
-        <CardHeader className="text-center">
-          <CardTitle>Card Title 1</CardTitle>
-        </CardHeader>
-        <CardContent>
-          This is the card content for card 1. It's a good place to put any information you want to display.
-        </CardContent>
-      </Card>
-      <Card className="relative">
-        <div className="absolute top-2 right-2 flex space-x-2">
-          <Button size="icon" variant="ghost">
-            <PencilIcon className="h-4 w-4" />
-            <span className="sr-only">Modify</span>
-          </Button>
-          <Button size="icon" variant="ghost">
-            <TrashIcon className="h-4 w-4" />
-            <span className="sr-only">Delete</span>
-          </Button>
-        </div>
-        <CardHeader className="text-center">
-          <CardTitle>Card Title 2</CardTitle>
-        </CardHeader>
-        <CardContent>
-          This is the card content for card 2. It's a good place to put any information you want to display.
-        </CardContent>
-      </Card>
-      <Card className="relative">
-        <div className="absolute top-2 right-2 flex space-x-2">
-          <Button size="icon" variant="ghost">
-            <PencilIcon className="h-4 w-4" />
-            <span className="sr-only">Modify</span>
-          </Button>
-          <Button size="icon" variant="ghost">
-            <TrashIcon className="h-4 w-4" />
-            <span className="sr-only">Delete</span>
-          </Button>
-        </div>
-        <CardHeader className="text-center">
-          <CardTitle>Card Title 3</CardTitle>
-        </CardHeader>
-        <CardContent>
-          This is the card content for card 3. It's a good place to put any information you want to display.
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="relative">
+      <div className="absolute top-2 right-2 flex space-x-2">
+        <Button size="icon" variant="ghost">
+          <PencilIcon className="h-4 w-4" />
+          <span className="sr-only">Modify</span>
+        </Button>
+        <Button size="icon" variant="ghost">
+          <TrashIcon className="h-4 w-4" />
+          <span className="sr-only">Delete</span>
+        </Button>
+      </div>
+      <CardHeader className="text-center">
+        <CardTitle>{chatMemory.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {chatMemory.content}
+      </CardContent>
+    </Card>
   )
 }
 
