@@ -24,3 +24,7 @@ https://mycodings.fly.dev/blog/2023-06-07-how-to-nextjs-nextauth-with-kakao-logi
 - KAKAO_CLIENT_SECRET에 아무 문자열
 
 4. src/app/api/auth/[...nextauth]/route.ts 파일 생성
+
+5. secret key 생성
+https://generate-secret.vercel.app/32
+NEXTAUTH_SECRET
