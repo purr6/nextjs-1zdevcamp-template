@@ -10,3 +10,17 @@ npx prisma studio
 
 #CRUD 예시 블로그
 https://medium.com/@irwantoalvin/crud-tutorial-using-next-js-app-router-typescript-prisma-planetscale-and-tailwindcss-part-1-a4b6687eecdf
+
+#NextJS Kakao login 블로그
+https://mycodings.fly.dev/blog/2023-06-07-how-to-nextjs-nextauth-with-kakao-login
+
+1. 카카오개발자에서 앱등록
+-  (Test, Production) 2개
+- 플랫폼 설정 web에 기본 도메인 설정 (Test앱은 http://localhost:3000, production앱은 본인 vercel 배포 URL)
+- redirect 설정 (Test앱은 http://localhost:3000/api/auth/callback/kakao, production앱은 vercel 배포 URL에 뒤에 path 동일한 구조)
+2. npm install next-auth
+3. .env.local에 값 update
+- KAKAO_CLIENT_ID 에 javascript key
+- KAKAO_CLIENT_SECRET에 아무 문자열
+
+4. src/app/api/auth/[...nextauth]/route.ts 파일 생성
