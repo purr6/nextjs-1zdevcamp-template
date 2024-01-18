@@ -13,11 +13,9 @@ const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-  pageProps,
+  children
 }: {
-  children: React.ReactNode,
-  pageProps: any
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
