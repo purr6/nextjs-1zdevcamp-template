@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
+import { PrismaClient } from "@prisma/client";
 
 // Create an OpenAI API client (that's edge friendly!)
 const openai = new OpenAI({
@@ -7,10 +8,14 @@ const openai = new OpenAI({
 });
 
 // IMPORTANT! Set the runtime to edge
-export const runtime = 'edge';
+// export const runtime = 'edge';
+
+const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
+  const memories = await prisma.chatMemory.findMany({});
+  console.log(memories);
 
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
